@@ -1,5 +1,6 @@
 import { List, ListItem, ListBtn } from './Contacts.styled';
 
+
 export const ContactsList = ({ contacts, onDelete }) => {
   if (contacts.length !== 0) {
     console.log(contacts);

@@ -2,6 +2,7 @@ import { Formik, ErrorMessage } from 'formik';
 import { Component } from 'react';
 import * as Yup from 'yup';
 import { StyledForm, AddBtn, StyledField } from './NameForm.styled';
+import { nanoid } from 'nanoid';
 
 const formSquema = Yup.object().shape({
   name: Yup.string()
@@ -17,18 +18,19 @@ export class NameForm extends Component {
   };
   handleInputChange = evt => {
     const { value, name } = evt.target;
-    this.setState({ [name]: value.trim() });
+        this.setState({ [name]: value.trim()});
   };
 
   handleSubmit = (values, actions) => {
     this.props.onSubmit(values);
     actions.resetForm();
+    
   };
 
   render() {
     return (
       <Formik
-        initialValues={{ name: '', number: '' }}
+        initialValues={{ id: nanoid(), name: '', number: '' }}
         validationSchema={formSquema}
         onSubmit={this.handleSubmit}
         
